@@ -38,13 +38,3 @@ class TypeInfo with _$TypeInfo {
   factory TypeInfo.fromJson(Map<String, dynamic> json) =>
       _$TypeInfoFromJson(json);
 }
-
-@freezed
-class Sprites with _$Sprites {
-  factory Sprites({
-    @JsonKey(name: 'front_default') String? frontDefault,
-  }) = _Sprites;
-
-  factory Sprites.fromJson(Map<String, dynamic> json) =>
-      _$SpritesFromJson(json);
-}

@@ -49,13 +49,3 @@ Map<String, dynamic> _$$TypeInfoImplToJson(_$TypeInfoImpl instance) =>
       'name': instance.name,
       'url': instance.url,
     };
-
-_$SpritesImpl _$$SpritesImplFromJson(Map<String, dynamic> json) =>
-    _$SpritesImpl(
-      frontDefault: json['front_default'] as String?,
-    );
-
-Map<String, dynamic> _$$SpritesImplToJson(_$SpritesImpl instance) =>
-    <String, dynamic>{
-      'front_default': instance.frontDefault,
-    };

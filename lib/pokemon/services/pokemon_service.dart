@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:api_test/models/pokemon_model.dart';
+import 'package:api_test/pokemon/models/pokemon_model.dart';
+import 'package:api_test/search_bar/search_query_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 
@@ -23,8 +24,11 @@ final pokemonServiceProvider = Provider<PokemonService>((ref) {
   return PokemonService();
 });
 
-final pokemonProvider =
-    FutureProvider.family<Pokemon, String>((ref, name) async {
+final pokemonProvider = FutureProvider<Pokemon?>((ref) async {
+  final query = ref.watch(searchQueryProvider);
+  if (query.isEmpty) {
+    return Future.value(null);
+  }
   final service = ref.read(pokemonServiceProvider);
-  return service.fetchPokemon(name);
+  return service.fetchPokemon(query);
 });
