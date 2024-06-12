@@ -1,4 +1,5 @@
 import 'package:api_test/services/pokemon_service.dart';
+import 'package:api_test/utils/string_capitalization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,12 +15,26 @@ class PokemonWidget extends ConsumerWidget {
     return asyncPokemon.when(
       data: (pokemon) => Column(
         children: [
-          Text('ID: ${pokemon.id}'),
-          Text('Name: ${pokemon.name}'),
+          Image.network(
+              'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png'),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                '#${pokemon.id}',
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(width: 8),
+              Text(pokemon.name.capitalize()),
+            ],
+          ),
           Text('Height: ${pokemon.height}'),
           Text('Weight: ${pokemon.weight}'),
           Text(
-            'Types: ${pokemon.types.map((type) => type.type.name).join(', ')}',
+            'Types: ${pokemon.types.map((type) => type.type.name.capitalize()).join(', ')}',
           ),
         ],
       ),
