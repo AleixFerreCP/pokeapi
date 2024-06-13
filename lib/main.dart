@@ -1,5 +1,5 @@
-import 'package:api_test/pokemon/pokemon_widget.dart';
-import 'package:api_test/search_bar/search_bar_widget.dart';
+import 'package:api_test/features/pokemon/widgets/pokemon_widget.dart';
+import 'package:api_test/features/search_bar/widgets/search_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
